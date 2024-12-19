@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
+    tools:context=".view.RegisterActivity"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="32dp"
@@ -16,7 +16,7 @@
         android:layout_height="120dp"
         android:src="@mipmap/user_empty"
         app:civ_border_width="3dp"
-    app:civ_border_color="#3F51B5" />
+    app:civ_border_color="@color/principalBlue" />
 
     <EditText
         android:id="@+id/name"
@@ -27,18 +27,11 @@
         />
 
     <EditText
-        android:id="@+id/dni"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:hint="cedula"
-        />
-    <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="cedula"
+        android:hint="password"
         />
     <Button
         android:id="@+id/registerBtn"

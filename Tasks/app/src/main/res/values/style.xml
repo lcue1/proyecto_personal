@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normalTextSize">20sp</dimen>
+    <dimen name="titleTextSize">50sp</dimen>
+    <style name="simpleText">
+        <item name="android:textSize">@dimen/normalTextSize</item>
+        <item name="android:textColor">@color/principalBlue</item>
+    </style>
+    <style name="titleText" parent="simpleText">
+        <item name="android:textSize">@dimen/titleTextSize</item>
+    </style>
+
+</resources>
