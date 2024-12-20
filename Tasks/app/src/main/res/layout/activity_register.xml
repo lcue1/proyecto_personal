@@ -37,7 +37,7 @@
         android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
+        android:text="Iniciar"
         android:layout_marginTop="32dp"
         android:backgroundTint="#3F51B5"
         />

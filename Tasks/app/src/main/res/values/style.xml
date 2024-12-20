@@ -2,12 +2,16 @@
 <resources>
     <dimen name="normalTextSize">20sp</dimen>
     <dimen name="titleTextSize">50sp</dimen>
+    <dimen name="subtitleTextSize">22sp</dimen>
     <style name="simpleText">
         <item name="android:textSize">@dimen/normalTextSize</item>
         <item name="android:textColor">@color/principalBlue</item>
     </style>
     <style name="titleText" parent="simpleText">
         <item name="android:textSize">@dimen/titleTextSize</item>
+    </style>
+    <style name="subtitleText" parent="simpleText">
+        <item name="android:textSize">@dimen/subtitleTextSize</item>
     </style>
 
 </resources>

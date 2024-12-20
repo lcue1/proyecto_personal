@@ -3,4 +3,7 @@
 <!-- Init Latyout activity -->
     <string name="initLayoutTitle">Tasks</string>
 
+    <!-- User  activity -->
+    <string name="titleUserActivity">Undefined</string>
+
 </resources>
