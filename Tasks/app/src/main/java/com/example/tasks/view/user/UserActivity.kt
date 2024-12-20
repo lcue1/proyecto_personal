@@ -1,17 +1,14 @@
 package com.example.tasks.view.user
 
-import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.tasks.R
-import com.example.tasks.databinding.ActivityRegisterBinding
 import com.example.tasks.databinding.ActivityUserBinding
-import com.example.tasks.model.TaskDatabaseHelper
 import com.example.tasks.model.User
 
 class UserActivity : AppCompatActivity() {
@@ -24,13 +21,30 @@ class UserActivity : AppCompatActivity() {
 
         initAtributes()
         Log.d("user", user?.name.toString())
-        loadInterface()
+        loadDataInUI()
 
     }
 
-    private fun loadInterface() {
-        binding.imageUser.setImageURI(user?.image?.toUri())
+    private fun loadDataInUI() {
+        try {
+            val uri = user?.image?.toUri()
+            if (uri != null && isUriAccessible(uri)) {
+                binding.imageUser.setImageURI(uri)
+            }
+        }catch (e:Exception){
+            Toast.makeText(this,"No se puede cargar la imagen",Toast.LENGTH_LONG).toString()
+        }
         binding.userName.text = user?.name ?: ""
+    }
+
+    private fun isUriAccessible(uri: Uri): Boolean {
+        return try {
+            contentResolver.openInputStream(uri)?.close()
+            true
+        } catch (e: Exception) {
+            Log.e("UserActivity", "Error al acceder al URI: ${e.message}")
+            false
+        }
     }
 
     private fun initAtributes() {
@@ -39,4 +53,8 @@ class UserActivity : AppCompatActivity() {
          user = intent.getParcelableExtra("user")
 
     }
+
+
+
+
 }

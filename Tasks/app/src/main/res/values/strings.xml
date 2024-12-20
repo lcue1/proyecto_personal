@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Tasks</string>
-<!-- Init Latyout activity -->
+<!-- Register activity -->
     <string name="initLayoutTitle">Tasks</string>
+    <string name="InitLoginBtn">Iniciar</string>
 
     <!-- User  activity -->
     <string name="titleUserActivity">Undefined</string>
+    <string name="addNewTaskBtn">+</string>
 
 </resources>
