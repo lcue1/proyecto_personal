@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="normalTextSize">20sp</dimen>
+    <dimen name="normalTextSize">15dp</dimen>
     <dimen name="titleTextSize">50sp</dimen>
     <dimen name="subtitleTextSize">22sp</dimen>
+
     <style name="simpleText">
         <item name="android:textSize">@dimen/normalTextSize</item>
         <item name="android:textColor">@color/principalBlue</item>
@@ -14,12 +15,25 @@
         <item name="android:textSize">@dimen/subtitleTextSize</item>
     </style>
 
+    <!--Card layout -->
+    <style name="cardLayoutText" parent="subtitleText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="dataCardLayout" parent="normalButton">
+        <item name="android:textColor">@color/white</item>
+    </style>
     <!--Button -->
     <style name="normalButton" parent="simpleText">
         <item name="android:textSize">@dimen/normalTextSize</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:backgroundTint">@color/principalBlue</item>
-
     </style>
+    <style name="addTaskBtn" parent="normalButton">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/titleTextSize</item>
+        <item name="android:backgroundTint">@color/green</item>
+    </style>
+
+
 
 </resources>
