@@ -9,7 +9,10 @@ import com.example.tasks.R
 import com.example.tasks.model.Task
 
 
-class TaskAdapter(private val itemList: List<Task>) :
+class TaskAdapter(
+    private val itemList: List<Task>,
+    private var noTaskClickFunction:(Task)->Unit
+) :
     RecyclerView.Adapter<TaskAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -29,6 +32,9 @@ class TaskAdapter(private val itemList: List<Task>) :
         holder.title.text = item.title
         holder.description.text = item.description
         holder.time.text = item.time
+        holder.itemView.setOnClickListener {
+            noTaskClickFunction(item)
+        }
     }
 
     override fun getItemCount(): Int = itemList.size

@@ -25,9 +25,8 @@ class UserActivity : AppCompatActivity() {
         }else  if (result.resultCode == RESULT_OK) {
             val data = result.data
             val resultValue = data?.getStringExtra("userAction")
-            val tasks=taskDB.getAllTasks()
-            binding.taskRecycle.layoutManager = LinearLayoutManager(this)
-            binding.taskRecycle.adapter=TaskAdapter(tasks)
+            //Refresh task added
+            loadTaskInRecyclerCiew()
             Toast.makeText(this,resultValue,Toast.LENGTH_SHORT).show()
             //falta recargar  reccycle view
         }
@@ -36,6 +35,7 @@ class UserActivity : AppCompatActivity() {
     private lateinit var binding:ActivityUserBinding
     private lateinit var taskDB:TaskDatabaseHelper
     private  var user: User? = null
+    private  lateinit var adapter:TaskAdapter
     private lateinit var taskAdapter:TaskAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,10 +70,21 @@ class UserActivity : AppCompatActivity() {
             Toast.makeText(this,"No se puede cargar la imagen",Toast.LENGTH_LONG).toString()
         }
         binding.userName.text = user?.name ?: ""
+        //Load tasks
+        loadTaskInRecyclerCiew()
+    }
+
+    private fun loadTaskInRecyclerCiew() {
         val tasks=taskDB.getAllTasks()
         binding.taskRecycle.layoutManager = LinearLayoutManager(this)
-        binding.taskRecycle.adapter=TaskAdapter(tasks)
+        adapter = TaskAdapter(tasks) { task ->
+            
+        }
+        binding.taskRecycle.adapter = adapter
+
+
     }
+
     // Permision  uri access
     private fun isUriAccessible(uri: Uri): Boolean {
         return try {
