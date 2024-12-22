@@ -128,19 +128,22 @@ class TaskDatabaseHelper private constructor(context: Context) :
         return db.insert(TABLE_TASK, null, values)
     }
 
-    fun getAllTasks(): List<Map<String, String>> {
+    fun getAllTasks(): List<Task> {
         val db = readableDatabase
-        val tasks = mutableListOf<Map<String, String>>()
+        val tasks:MutableList<Task> = mutableListOf()
         val cursor = db.rawQuery("SELECT * FROM $TABLE_TASK", null)
         try {
             while (cursor.moveToNext()) {
-                tasks.add(
-                    mapOf(
-                        COLUMN_TASK_TITLE to cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TITLE)),
-                        COLUMN_TASK_DESCRIPTION to cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_DESCRIPTION)),
-                        COLUMN_TASK_TIME to cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TIME))
-                    )
-                )
+               tasks.add(
+                   Task(
+                       id= cursor.getColumnIndexOrThrow(COLUMN_TASK_ID),
+                       userId= cursor.getColumnIndexOrThrow(COLUMN_USER_ID),
+                       title= cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TITLE)),
+                       description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_DESCRIPTION)),
+                       time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TIME)),
+                   )
+               )
+
             }
         } finally {
             cursor.close()

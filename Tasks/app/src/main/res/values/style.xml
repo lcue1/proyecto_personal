@@ -22,7 +22,15 @@
     <style name="dataCardLayout" parent="normalButton">
         <item name="android:textColor">@color/white</item>
     </style>
+    <!--Edit text -->
+    <style name="normalEditText" >
+        <item name="android:textSize">@dimen/normalTextSize</item>
+        <item name="android:textColor">@color/principalBlue</item>
+        <item name="android:textColorHint">@color/principalBlue</item>
+    </style>
+
     <!--Button -->
+
     <style name="normalButton" parent="simpleText">
         <item name="android:textSize">@dimen/normalTextSize</item>
         <item name="android:textColor">@color/white</item>

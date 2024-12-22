@@ -29,10 +29,13 @@
         android:theme="@style/Theme.Tasks"
         tools:targetApi="31">
         <activity
-            android:name=".view.user.AddTaskActivity"
+            android:name=".view.user.EditTaskActivity"
             android:exported="false" />
         <activity
             android:name=".view.user.UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.AddTaskActivity"
             android:exported="false" />
         <activity
             android:name=".view.RegisterActivity"

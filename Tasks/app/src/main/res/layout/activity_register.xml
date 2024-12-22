@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:hint="Nombre"
+        style="@style/normalEditText"
         />
 
     <EditText
@@ -32,6 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:hint="password"
+        style="@style/normalEditText"
+
         />
     <Button
         android:id="@+id/registerBtn"
