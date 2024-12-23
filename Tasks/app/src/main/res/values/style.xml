@@ -41,6 +41,9 @@
         <item name="android:textSize">@dimen/titleTextSize</item>
         <item name="android:backgroundTint">@color/green</item>
     </style>
+    <style name="deleteBtn" parent="normalButton">
+        <item name="android:backgroundTint">@color/red</item>
+    </style>
 
 
 

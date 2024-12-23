@@ -136,16 +136,15 @@ class TaskDatabaseHelper private constructor(context: Context) :
             arrayOf(userId.toString())
             )
 
-        Log.d("aaaaaaaaaaaaa",userId.toString())
         try {
             while (cursor.moveToNext()) {
                tasks.add(
                    Task(
-                       id= cursor.getColumnIndexOrThrow(COLUMN_TASK_ID),
-                       userId= cursor.getColumnIndexOrThrow(COLUMN_USER_ID),
-                       title= cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TITLE)),
+                       id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_TASK_ID)),
+                       userId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID)),
+                       title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TITLE)),
                        description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_DESCRIPTION)),
-                       time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TIME)),
+                       time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_TIME))
                    )
                )
 
@@ -153,7 +152,32 @@ class TaskDatabaseHelper private constructor(context: Context) :
         } finally {
             cursor.close()
         }
+        Log.d("tasksssss",tasks.toString())
         return tasks
+    }
+
+    fun updateTask(taskId: Int, title: String, description: String, time: String): Int {
+        val db = writableDatabase
+
+        // Crear valores a actualizar
+        val values = ContentValues().apply {
+            put(COLUMN_TASK_TITLE, title)
+            put(COLUMN_TASK_DESCRIPTION, description)
+            put(COLUMN_TASK_TIME, time)
+        }
+
+        // Actualizar la base de datos
+        val rowsUpdated = db.update(
+            TABLE_TASK, // Nombre de la tabla
+            values,     // Valores a actualizar
+            "$COLUMN_TASK_ID = ?", // Condición WHERE
+            arrayOf(taskId.toString()) // Argumentos de la condición
+        )
+
+        // Cerrar la base de datos (opcional, para liberar recursos)
+        db.close()
+
+        return rowsUpdated
     }
 
     fun deleteUser(userId: Int): Int {

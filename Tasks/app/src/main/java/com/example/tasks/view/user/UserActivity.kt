@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -14,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasks.R
 import com.example.tasks.databinding.ActivityUserBinding
+import com.example.tasks.model.Task
 import com.example.tasks.model.TaskDatabaseHelper
 import com.example.tasks.model.User
+import java.io.Serializable
 
 class UserActivity : AppCompatActivity() {
     private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -47,16 +50,15 @@ class UserActivity : AppCompatActivity() {
         loadDataInUI()
 
         //Recycleview
-        val recyclerView = findViewById<RecyclerView>(R.id.taskRecycle)
 
-       binding.addTaskBtn.setOnClickListener { openActivity(AddTaskActivity::class.java) }
+       binding.addTaskBtn.setOnClickListener { openActivity(AddTaskActivity::class.java, user) }
 
 
     }
 
-    private fun openActivity(classActivity:Class<out Activity>) {
+    private fun openActivity(classActivity:Class<out Activity>, extraData:Parcelable?,) {
         val intent = Intent(this,classActivity)
-        intent.putExtra("user", user)
+        intent.putExtra("extraData", extraData)
         resultLauncher.launch(intent)
     }
 
@@ -76,10 +78,11 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun loadTaskInRecyclerCiew() {
-        val tasks=taskDB.getAllTasks(user!!.id!!.toInt())
+        val tasks=taskDB.getAllTasks(user!!.id!!.toInt())// get user tasks
         binding.taskRecycle.layoutManager = LinearLayoutManager(this)
-        adapter = TaskAdapter(tasks) { task ->
-            openActivity(EditTaskActivity::class.java)
+        adapter = TaskAdapter(tasks) { task ->// click method
+            val actualTask=Task(task.id, task.userId,task.title, task.description, task.time)
+            openActivity(EditTaskActivity::class.java, actualTask)
         }
         binding.taskRecycle.adapter = adapter
 

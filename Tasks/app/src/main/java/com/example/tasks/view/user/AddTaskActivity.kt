@@ -11,6 +11,7 @@ import com.example.tasks.R
 import com.example.tasks.databinding.ActivityAddTaskBinding
 import com.example.tasks.model.TaskDatabaseHelper
 import com.example.tasks.model.User
+import com.example.tasks.utils.returnToUserActivity
 import com.example.tasks.utils.validateEditText
 
 class AddTaskActivity : AppCompatActivity() {
@@ -51,17 +52,11 @@ class AddTaskActivity : AppCompatActivity() {
         }
     }
 
-    private fun returnToUserActivity(RESULT_CODE:Int, value:String) {//go before activity
-        resultIntent = Intent()
-        resultIntent.putExtra("userAction", value)
-        setResult(RESULT_CODE, resultIntent)
-        finish()
-    }
 
     private fun initAtributs() {
         binding= ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        user= intent.getParcelableExtra("user")!!
+        user= intent.getParcelableExtra("extraData")!!
          taskDB = TaskDatabaseHelper.createDatabase(this)!!
 
     }

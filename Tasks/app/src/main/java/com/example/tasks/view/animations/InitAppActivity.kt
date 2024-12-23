@@ -23,6 +23,7 @@ class InitAppActivity : AppCompatActivity() {
         val circleView: View = findViewById(R.id.circleView)
         startBouncingAnimation(circleView)
         navigateToMainScreen()
+        
 
     }
     private fun startBouncingAnimation(view: View) {

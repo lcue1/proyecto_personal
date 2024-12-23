@@ -12,20 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="50dp"
-        >
+        android:padding="16dp">
 
+        <!-- Imagen a la izquierda -->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageUser"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
             android:src="@mipmap/user_empty"
-            />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
 
+        <!-- Texto en el centro -->
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
@@ -33,10 +31,18 @@
             android:text="@string/titleUserActivity"
             android:textStyle="bold"
             style="@style/subtitleText"
+            android:layout_centerInParent="true" />
+
+        <!-- Botón a la derecha -->
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salir"
+            style="@style/normalButton"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true" />
     </RelativeLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskRecycle"
         android:layout_width="0dp"
