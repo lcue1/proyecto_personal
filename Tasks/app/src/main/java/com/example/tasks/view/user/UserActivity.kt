@@ -1,5 +1,6 @@
 package com.example.tasks.view.user
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -48,13 +49,13 @@ class UserActivity : AppCompatActivity() {
         //Recycleview
         val recyclerView = findViewById<RecyclerView>(R.id.taskRecycle)
 
-       binding.addTaskBtn.setOnClickListener { insertTask() }
+       binding.addTaskBtn.setOnClickListener { openActivity(AddTaskActivity::class.java) }
 
 
     }
 
-    private fun insertTask() {
-        val intent = Intent(this,AddTaskActivity::class.java)
+    private fun openActivity(classActivity:Class<out Activity>) {
+        val intent = Intent(this,classActivity)
         intent.putExtra("user", user)
         resultLauncher.launch(intent)
     }
@@ -75,13 +76,12 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun loadTaskInRecyclerCiew() {
-        val tasks=taskDB.getAllTasks()
+        val tasks=taskDB.getAllTasks(user!!.id!!.toInt())
         binding.taskRecycle.layoutManager = LinearLayoutManager(this)
         adapter = TaskAdapter(tasks) { task ->
-            
+            openActivity(EditTaskActivity::class.java)
         }
         binding.taskRecycle.adapter = adapter
-
 
     }
 

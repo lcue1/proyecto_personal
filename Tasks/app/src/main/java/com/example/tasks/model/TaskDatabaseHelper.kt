@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 
 class TaskDatabaseHelper private constructor(context: Context) :
@@ -128,10 +129,14 @@ class TaskDatabaseHelper private constructor(context: Context) :
         return db.insert(TABLE_TASK, null, values)
     }
 
-    fun getAllTasks(): List<Task> {
+    fun getAllTasks(userId:Int): List<Task> {
         val db = readableDatabase
         val tasks:MutableList<Task> = mutableListOf()
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_TASK", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_TASK WHERE $COLUMN_USER_ID = ?",
+            arrayOf(userId.toString())
+            )
+
+        Log.d("aaaaaaaaaaaaa",userId.toString())
         try {
             while (cursor.moveToNext()) {
                tasks.add(
