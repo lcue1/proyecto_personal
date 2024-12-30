@@ -49,10 +49,11 @@ class UserActivity : AppCompatActivity() {
         initAtributes()
         loadDataInUI()
 
-        //Recycleview
-
+        //Listeners
        binding.addTaskBtn.setOnClickListener { openActivity(AddTaskActivity::class.java, user) }
-
+        binding.logoutButton.setOnClickListener {
+            finishAffinity()
+        }
 
     }
 

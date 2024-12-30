@@ -8,4 +8,8 @@
     <string name="titleUserActivity">Undefined</string>
     <string name="addNewTaskBtn">+</string>
 
+    <!--Notifications -->
+    <string name="channel_name">Notifications tasks</string>
+    <string name="channel_description">Used to time out infrmation task user</string>
+
 </resources>

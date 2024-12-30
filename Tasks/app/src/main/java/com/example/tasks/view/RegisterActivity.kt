@@ -13,6 +13,7 @@ import com.example.tasks.databinding.ActivityRegisterBinding
 import com.example.tasks.model.TaskDatabaseHelper
 import com.example.tasks.model.User
 import com.example.tasks.utils.validateEditText
+import com.example.tasks.view.notifications.createNotificationChannel
 import com.example.tasks.view.user.UserActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -27,6 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.image.setOnClickListener{selectImage()}//Load image
         binding.registerBtn.setOnClickListener {register()}//validate and register user in bd
 
+        createNotificationChannel(this)//create chanel to API 28
     }
 
     private fun register() {

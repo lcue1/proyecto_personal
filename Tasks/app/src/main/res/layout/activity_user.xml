@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="21dp"
+        >
 
         <!-- Imagen a la izquierda -->
         <de.hdodenhof.circleimageview.CircleImageView
@@ -51,6 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="32dp"
         />
 
     <Button

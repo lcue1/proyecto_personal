@@ -28,7 +28,7 @@ class TaskDatabaseHelper private constructor(context: Context) :
         private const val COLUMN_TASK_DESCRIPTION = "description"
         private const val COLUMN_TASK_TIME = "time"
 
-        //singleton arci=chitecture
+        //Singleton pattern
         private var taskDBHelper:TaskDatabaseHelper?= null
         fun createDatabase(context:Context):TaskDatabaseHelper?{
             if(taskDBHelper == null){

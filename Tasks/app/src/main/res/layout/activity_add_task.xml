@@ -64,7 +64,9 @@
             android:hint="fecha"
             android:inputType="datetime"
             style="@style/normalEditText"
-            />
+            android:timePickerMode="clock" />
+
+
     </LinearLayout>
 
     <Button
