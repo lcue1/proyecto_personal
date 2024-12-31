@@ -1,3 +1,5 @@
+<img src="https://alianzadelsur3.com/pluginfile.php/1/theme_edumy/headerlogo1/1667446694/ESCUDO%20ITECSUR%20-%201%20-%20Editado.png" width = 100px>
+
 # Luis Ubillus - Proyecto Personal
 
 ## Descripción
