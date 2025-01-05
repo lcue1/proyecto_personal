@@ -44,5 +44,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         style="@style/dataCardLayout"
         />
+    <View
+        android:layout_width="128dp"
+        android:layout_height="8dp"
+        android:background="@color/green"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

@@ -132,7 +132,7 @@ class TaskDatabaseHelper private constructor(context: Context) :
     fun getAllTasks(userId:Int): List<Task> {
         val db = readableDatabase
         val tasks:MutableList<Task> = mutableListOf()
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_TASK WHERE $COLUMN_USER_ID = ?",
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_TASK WHERE $COLUMN_USER_ID = ? ORDER BY $COLUMN_TASK_ID DESC",
             arrayOf(userId.toString())
             )
 

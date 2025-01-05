@@ -42,8 +42,8 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     private fun addTaskInDB() {
-        val validation = validateEditText(this, listOf(binding.title,binding.description,))
-        if (validation){
+        val validationEdit = validateEditText(this, listOf(binding.title,binding.description,))
+        if (validationEdit){
             val hourPicker= binding.time.hour
             val minutePicker= binding.time.minute
 
@@ -52,9 +52,10 @@ class AddTaskActivity : AppCompatActivity() {
                 binding.title.text.toString(),
                 binding.description.text.toString(),
                 time)
-            createNotification(this,calulateMiliSeconds(hourPicker,minutePicker))
-
-            returnToUserActivity(RESULT_OK, "Tarea agregada")
+            if(saveTask>0){
+                createNotification(this,calulateMiliSeconds(hourPicker,minutePicker))
+                returnToUserActivity(RESULT_OK, "Tarea agregada")
+            }
         }
     }
 
