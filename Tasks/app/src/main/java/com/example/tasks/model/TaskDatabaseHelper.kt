@@ -152,7 +152,6 @@ class TaskDatabaseHelper private constructor(context: Context) :
         } finally {
             cursor.close()
         }
-        Log.d("tasksssss",tasks.toString())
         return tasks
     }
 

@@ -53,7 +53,11 @@ class AddTaskActivity : AppCompatActivity() {
                 binding.description.text.toString(),
                 time)
             if(saveTask>0){
-                createNotification(this,calulateMiliSeconds(hourPicker,minutePicker))
+                createNotification(this,
+                    calulateMiliSeconds(hourPicker,minutePicker),
+                    binding.title.text.toString(),
+                    binding.description.text.toString()
+                )
                 returnToUserActivity(RESULT_OK, "Tarea agregada")
             }
         }

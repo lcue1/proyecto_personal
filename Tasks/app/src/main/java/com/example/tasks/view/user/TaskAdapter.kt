@@ -12,8 +12,7 @@ import com.example.tasks.model.Task
 class TaskAdapter(
     private val itemList: List<Task>,
     private var noTaskClickFunction:(Task)->Unit
-) :
-    RecyclerView.Adapter<TaskAdapter.ItemViewHolder>() {
+) :  RecyclerView.Adapter<TaskAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.title)
